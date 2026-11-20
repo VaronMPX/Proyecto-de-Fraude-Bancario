@@ -1,0 +1,45 @@
+# =====================================================
+# Reto 1: Deteccion de fraude (Kafka, S3, Spark, Neo4j)
+# Archivo .env - configuracion local de desarrollo
+# Ubicacion: dentro de la carpeta reto1_fraude
+# =====================================================
+
+# ---------- Kafka ----------
+KAFKA_BOOTSTRAP_SERVERS=localhost:9092
+# Dentro de Docker (otro contenedor en la misma red) seria: kafka:9092
+
+# ---------- S3 / Data lake (RustFS, compatible con S3) ----------
+S3_ENDPOINT=http://localhost:9000
+S3_ENDPOINT_DOCKER=http://s3:9000
+S3_ACCESS_KEY=rustfsadmin
+S3_SECRET_KEY=rustfsadmin
+S3_REGION=us-east-1
+S3_BUCKET=fraude-datalake
+S3_PREFIX=raw/
+S3_CONSOLE_URL=http://localhost:9001/rustfs/console/
+
+# ---------- Neo4j ----------
+# Contenedor que usas ahora (reto1-fraude-neo4j): navegador 7475, bolt 7688
+NEO4J_URI=bolt://localhost:7688
+NEO4J_BROWSER_URL=http://localhost:7475
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=fraude1234
+NEO4J_DATABASE=neo4j
+
+# Contenedor anterior (fraude-neo4j, neo4j:5.20): navegador 7474, bolt 7687
+NEO4J_ALT_URI=bolt://localhost:7687
+NEO4J_ALT_BROWSER_URL=http://localhost:7474
+
+# ---------- Rutas del proyecto ----------
+DATASET_CRUDO=data/dataset_fraude.csv
+SPARK_SALIDA=salida_spark
+SPARK_SALIDA_DOCKER=salida_spark_docker
+EXPORT_DIR=salida_spark/export
+
+# ---------- Red de Docker (para el comando de Spark) ----------
+DOCKER_NETWORK=reto1_fraude_default
+
+# ---------- BigQuery ----------
+BQ_DATASET=fraude
+BQ_TABLA_TRANSACCIONES=transacciones
+BQ_TABLA_CUENTAS=cuentas_riesgo
