@@ -1,0 +1,16 @@
+services:
+  neo4j:
+    image: neo4j:5
+    container_name: reto1-fraude-neo4j
+    environment:
+      NEO4J_AUTH: neo4j/fraude1234
+      NEO4J_PLUGINS: '["graph-data-science"]'
+      NEO4J_server_memory_heap_max__size: 2G
+      NEO4J_dbms_security_procedures_unrestricted: gds.*
+    ports: ["7475:7474", "7688:7687"]
+    volumes:
+      - ./salida_spark/export:/var/lib/neo4j/import
+      - neo4j_7475_data:/data
+
+volumes:
+  neo4j_7475_data:
