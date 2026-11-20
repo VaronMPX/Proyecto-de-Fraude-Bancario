@@ -1,0 +1,6 @@
+﻿neo4j-data/
+salida_spark_docker/
+salida_spark/
+*.csv
+*.parquet
+__pycache__/
